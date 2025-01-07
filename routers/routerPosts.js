@@ -2,36 +2,31 @@
 const express = require('express');
 const router = express.Router();
 
+//Importo le funzioni (per le rotte) del controller:
+const postsController = require('../controllers/postsController.js');
+
+
+
 //ROTTE CRUD:
 //index
-router.get('/', (req,res) =>{
-   res.send('Lista dei post');
-});
+router.get('/', postsController.index);
 
 //show
-router.get('/:id', (req,res) =>{
-   res.send(`Visualizza post con id: ${req.params.id}`);
-});
+router.get('/:id', postsController.show);
 
 //store
-router.post('/', (req,res) =>{
-   res.send('Aggiungi un nuovo post');
-});
+router.post('/', postsController.store);
 
 //update
-router.put('/:id', (req,res) =>{
-   res.send(`Modifico il post con id: ${req.params.id}`);
-});
+router.put('/:id', postsController.update);
 
 //modify
-router.patch('/:id', (req,res) =>{
-   res.send(`Modifico parzialmente il post con id: ${req.params.id}`);
-});
+router.patch('/:id', postsController.modify);
 
 //destroy
-router.delete('/:id', (req,res) =>{
-   res.send(`Ellimino il post con id: ${req.params.id}`);
-});
+router.delete('/:id', postsController.destroy);
+
+
 
 //Esporto il modulo del router:
 module.exports = router;

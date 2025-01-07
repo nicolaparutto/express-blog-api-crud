@@ -18,7 +18,7 @@ app.use('/posts', postsRouter);
 //Per farlo "girare", metto in ascolto il server alla porta che gli assegno:
 app.listen(port, () =>{
    console.log(`server in ascolto alla porta ${port}`)
-})
+});
 
 
 
