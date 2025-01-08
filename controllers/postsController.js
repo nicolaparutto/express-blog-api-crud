@@ -14,10 +14,10 @@ const index = (req, res) => {
 
 const show = (req, res) =>{
    //Salvo il parametro che mi "arriva" dalla richiesta:
-   const id = req.params.id;
+   const id = parseInt(req.params.id);
 
    //Creo la logica per trovare il post, con quel determinato parametro richiesto (in questo caso l'id):
-   let post = posts.find(post => post.id == id);
+   let post = posts.find(post => post.id === id);
 
    //La risposta restituirà il post in formato json:
    res.json(post);
@@ -43,10 +43,10 @@ const store = (req, res) =>{
 
 const update = (req, res) =>{
    //Salvo il parametro che mi "arriva" dalla richiesta:
-   const id = req.params.id;
+   const id = parseInt(req.params.id);
 
    //Come per show e destroy devo poter identificare il post, in questo caso per poi effettuattuare modifiche:
-   let post = posts.find(post => post.id == id);
+   let post = posts.find(post => post.id === id);
 
    //Gestione dell'errore, nel caso si stia tentando di modificare un post non esistente:
    if (!post){
@@ -74,10 +74,10 @@ const modify = (req, res) =>{
 
 const destroy = (req,res) =>{
    //Salvo il parametro che mi "arriva" dalla richiesta:
-   const id = req.params.id;
+   const id = parseInt(req.params.id);
 
    //Creo la logica per trovare il post, con quel determinato parametro richiesto (in questo caso l'id):
-   let post = posts.find(post => post.id == id);
+   let post = posts.find(post => post.id === id);
 
    //Logica per eliminare il post richiesto con splice: (a splice passo come indice di partenza il post trovato con find)
    posts.splice(posts.indexOf(post), 1);
