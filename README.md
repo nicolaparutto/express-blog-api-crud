@@ -1,5 +1,4 @@
-Express Blog - API CRUD (parte 1)
-===
+# Express Blog - API CRUD (parte 1)
 ## Consegna:
 ### Milestone 1:
 - Riprendendo l'esercizio dell'ultima volta, creare una nuova cartella 'controllers', con all'interno un controller per i nostri post.
@@ -17,3 +16,25 @@ Express Blog - API CRUD (parte 1)
 ### Bonus:
 - Implementare un filtro di ricerca nella index che (tramite una query string) mostri solo i post che hanno un determinato tag.
 - In Show e Destroy, controllare se il parametro si riferisce ad un post esistente, nel caso non esista un post con quel determinato parametro, rispondere con uno stato 404 e un messaggio di errore, sempre in formato JSON.
+
+
+# Express Blog - API CRUD (parte 2)
+## Consegna:
+### Milestone 1:
+- Per iniziare, da Thunder Client preparare una nuova chiamata verso la rotta store.
+- Impostare il verbo e l'endpoint corretti.
+- Inseriamo come corpo della request un oggetto che rappresenti un nuovo post.
+
+### Milestone 2:
+- Impostare il body-parser per far si che la nostra app riesca a decifrare il request body.
+- Solo dopo, all'interno della rotta store, stampare nel terminale i dati in arrivo, con un console.log.
+
+### Milestone 3:
+- Implementare la logica per aggiungere un nuovo post al blog, e premere la risposta adeguata. Testare con Thunder Client.
+
+### Milestone 4:
+- Ripetere il procedimento per la rotta di Update, in modo da avere la possibilità di modificare le risorse.
+
+### Bonus:
+- Fare i bonus dell'esercizio precedente, se non già fatti.
+- In update controllare se il parametro si riferisce ad un post esistente, in caso contrario, rispondere con uno status 404 e un messaggio d'errore, sempre in formato JSON.
