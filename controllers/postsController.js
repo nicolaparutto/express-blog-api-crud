@@ -24,8 +24,21 @@ const show = (req, res) =>{
 };
 
 const store = (req, res) =>{
-   console.log(req.body)
-   res.send('Aggiungi un nuovo post');
+   //Genero un nuovo id, che rispetto all'ultimo elemento dell'array deve essere sempre +1:
+   const id = posts[posts.length -1].id +1;
+   //Creo il nuovo oggetto (post) che conterrà sia l'id, che le informazioni ricevute dal corpo della request:
+   const newPost = {
+      id,
+      title: req.body.title,
+      content: req.body.content,
+      image: req.body.image,
+      tags: req.body.tags
+   }
+   //Pusho il nuovo oggetto (post) all'interno dell'array dei post:
+   posts.push(newPost);
+   
+   //La risposta sarà la lista dei post aggiornata:
+   res.send(posts);
 };
 
 const update = (req, res) =>{
