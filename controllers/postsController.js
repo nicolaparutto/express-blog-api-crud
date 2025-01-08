@@ -48,6 +48,16 @@ const update = (req, res) =>{
    //Come per show e destroy devo poter identificare il post, in questo caso per poi effettuattuare modifiche:
    let post = posts.find(post => post.id == id);
 
+   //Gestione dell'errore, nel caso si stia tentando di modificare un post non esistente:
+   if (!post){
+      res.status(404);
+      return res.json({
+         message: 'Post non trovato',
+         status: 404,
+         error: 'Not Found'
+      });
+   }
+
    //Aggiorno le proprietà dell'oggetto (post) selezionato:
    post.title = req.body.title;
    post.content = req.body.content;
