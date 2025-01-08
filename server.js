@@ -5,15 +5,13 @@ const app = express();
 //Assegno una porta al server:
 const port = 3000;
 
-
+//Registro il body-parser per permettere ad express di decodificare il dato che riceve dal body della request(in questo caso per i formati json):
+app.use(express.json());
 
 //Importo il modulo delle rotte:
 const postsRouter = require('./routers/routerPosts.js');
-
 //"Dico ad express" di utilizzare le rotte che gli fornisco, importate da un altro file:
 app.use('/posts', postsRouter);
-
-
 
 //Per farlo "girare", metto in ascolto il server alla porta che gli assegno:
 app.listen(port, () =>{
