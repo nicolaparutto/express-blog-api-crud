@@ -36,13 +36,26 @@ const store = (req, res) =>{
    }
    //Pusho il nuovo oggetto (post) all'interno dell'array dei post:
    posts.push(newPost);
-   
-   //La risposta sarà la lista dei post aggiornata:
-   res.send(posts);
+
+   //La risposta sarà la lista dei post aggiornata in formato json:
+   res.json(posts);
 };
 
 const update = (req, res) =>{
-   res.send(`Modifico il post con id: ${req.params.id}`);
+   //Salvo il parametro che mi "arriva" dalla richiesta:
+   const id = req.params.id;
+
+   //Come per show e destroy devo poter identificare il post, in questo caso per poi effettuattuare modifiche:
+   let post = posts.find(post => post.id == id);
+
+   //Aggiorno le proprietà dell'oggetto (post) selezionato:
+   post.title = req.body.title;
+   post.content = req.body.content;
+   post.image = req.body.image;
+   post.tags = req.body.tags;
+
+   //La risposta sarà il post aggiornato:
+   res.json(post);
 };
 
 const modify = (req, res) =>{
