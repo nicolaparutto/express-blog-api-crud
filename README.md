@@ -1,7 +1,7 @@
 Express Blog - API CRUD (parte 1)
 ===
 ## Consegna:
-
+### Milestone 1:
 - Riprendendo l'esercizio dell'ultima volta, creare una nuova cartella 'controllers', con all'interno un controller per i nostri post.
 - All'interno, preparare tutte le funzioni necessarie e copiare in ciascuna, la logica delle funzioni che attualmente si trovano nel router (al momento mantenerle con la sola restituzione di un messaggio).
 - In seguito nel file delle rotte (routers/routerPosts.js) importare le funzioni dichiarate nel controller e associarle alle varie rotte, come visto in classe.
