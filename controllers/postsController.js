@@ -83,10 +83,10 @@ const destroy = (req,res) =>{
    posts.splice(posts.indexOf(post), 1);
 
    //faccio un console log della lista dei post, per vederla nel terminale aggiornata:
-   console.log(posts)
+   console.log(posts);
 
    //Rispondo con uno status 204 nel caso l'elliminazione abbia avuto successo:
-   res.sendStatus(204)
+   res.sendStatus(204);
 };
 
 //Esporto il modulo delle funzioni che assegneremo alle rotte:

@@ -5,6 +5,9 @@ const app = express();
 //Assegno una porta al server:
 const port = 3000;
 
+//Importo il modulo della gestione dell'errore in caso di endpoint inesistente:
+const endpNotFound = require('./middlewares/endpNotFound.js');
+
 //Registro il body-parser per permettere ad express di decodificare il dato che riceve dal body della request(in questo caso per i formati json):
 app.use(express.json());
 
@@ -12,6 +15,14 @@ app.use(express.json());
 const postsRouter = require('./routers/routerPosts.js');
 //"Dico ad express" di utilizzare le rotte che gli fornisco, importate da un altro file:
 app.use('/posts', postsRouter);
+
+//Utilizzo la funzione della gestione dell'errore in caso di endpoint inesistente:
+app.use(endpNotFound);
+
+
+
+
+
 
 //Per farlo "girare", metto in ascolto il server alla porta che gli assegno:
 app.listen(port, () =>{
