@@ -18,6 +18,7 @@
 - In Show e Destroy, controllare se il parametro si riferisce ad un post esistente, nel caso non esista un post con quel determinato parametro, rispondere con uno stato 404 e un messaggio di errore, sempre in formato JSON.
 
 
+
 # Express Blog - API CRUD (parte 2)
 ## Consegna:
 ### Milestone 1:
@@ -38,3 +39,14 @@
 ### Bonus:
 - Fare i bonus dell'esercizio precedente, se non già fatti.
 - In update controllare se il parametro si riferisce ad un post esistente, in caso contrario, rispondere con uno status 404 e un messaggio d'errore, sempre in formato JSON.
+
+
+
+# Express Blog - API CRUD (parte 3)
+## Consegna:
+Dopo aver completato tutte le operazini CRUD, completare l'API inserendo un middleware per la gestione delle rotte non registrate e uno per la gestione degli errori. 
+- Se viene chiamato un endpoint inesistente, un middleware dovrà rispondere con un messaggio e uno status appropriato.
+- Se viene generato un errore, un middleware si occuperà di rispondere con un messaggio e uno status appropriato.
+
+### Bonus:
+- Creare un middleware che in caso di inserimento/modifica controlli la validità dei dati.
