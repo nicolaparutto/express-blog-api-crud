@@ -6,7 +6,6 @@ const router = express.Router();
 const postsController = require('../controllers/postsController.js');
 
 
-
 //ROTTE CRUD:
 //index
 router.get('/', postsController.index);
@@ -25,7 +24,6 @@ router.patch('/:id', postsController.modify);
 
 //destroy
 router.delete('/:id', postsController.destroy);
-
 
 
 //Esporto il modulo del router:

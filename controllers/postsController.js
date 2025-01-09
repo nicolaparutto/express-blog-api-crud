@@ -3,13 +3,15 @@ const posts = require('../data/postsArray');
 
 
 //Metodi delle rotte CRUD:
-/*
-Cioè funzioni che, una volta importate nel file del router,
-svolgeranno le funzioni di ogni determinata rotta
-*/
 const index = (req, res) => {
-   //Alla richiesta di visualizzare i post, restituisco tutta la lista dei post in formato json:
-   res.json(posts);
+   //postList è inizializzata come la lista (array) dei post:
+   let postList = posts;
+   //Se esiste una query string però, si attiva una funzione hche filtra l'array, e ritorna soltanto i post che contengono quel determianto tag (in questo caso):
+   if(req.query.tags){
+      postList = posts.filter(post => post.tags.includes(req.query.tags))
+   }
+   //Restituisco la lista dei post:
+   res.json(postList);
 };
 
 const show = (req, res) =>{
@@ -18,6 +20,16 @@ const show = (req, res) =>{
 
    //Creo la logica per trovare il post, con quel determinato parametro richiesto (in questo caso l'id):
    let post = posts.find(post => post.id === id);
+
+   //Risposta di errore nel caso il parametro che arriva si riferisca ad un post inesistente:
+   if(!post){
+      res.status(404)
+    return res.json({
+      message: 'Post non trovato',
+      status: 404,
+      error: 'not found'
+    })
+   }
 
    //La risposta restituirà il post in formato json:
    res.json(post);
@@ -69,7 +81,29 @@ const update = (req, res) =>{
 };
 
 const modify = (req, res) =>{
-   res.send(`Modifico parzialmente il post con id: ${req.params.id}`);
+   //Salvo il parametro che mi "arriva" dalla richiesta:
+   const id = parseInt(req.params.id);
+
+   //Come per show e destroy devo poter identificare il post, in questo caso per poi effettuattuare modifiche:
+   let post = posts.find(post => post.id === id);
+
+   //Gestione dell'errore, nel caso si stia tentando di modificare un post non esistente:
+   if (!post){
+      res.status(404);
+      return res.json({
+         message: 'Post non trovato',
+         status: 404,
+         error: 'Not Found'
+      });
+   }
+
+   //Aggiorno le proprietà dell'oggetto (post) selezionato, in questo caso con un metodo diverso (per "provarli" entrambi):
+   for (let key in req.body){
+      post[key] = req.body[key]
+   }
+
+   //La risposta sarà il post aggiornato:
+   res.json(post);
 };
 
 const destroy = (req,res) =>{
@@ -78,6 +112,16 @@ const destroy = (req,res) =>{
 
    //Creo la logica per trovare il post, con quel determinato parametro richiesto (in questo caso l'id):
    let post = posts.find(post => post.id === id);
+
+   //Risposta di errore nel caso il parametro che arriva si riferisca ad un post inesistente:
+   if(!post){
+      res.status(404)
+    return res.json({
+      message: 'Post non trovato',
+      status: 404,
+      error: 'not found'
+    })
+   }
 
    //Logica per eliminare il post richiesto con splice: (a splice passo come indice di partenza il post trovato con find)
    posts.splice(posts.indexOf(post), 1);
@@ -98,5 +142,3 @@ module.exports = {
    modify,
    destroy
 }
-
-

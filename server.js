@@ -36,9 +36,6 @@ app.listen(port, () =>{
 });
 
 
-
-
-
 //Entry Point del server(per verificare se funziona testando da Thunder Client):
 /*
 app.get('/', (req, res) =>{
